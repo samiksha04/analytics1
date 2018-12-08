@@ -14,7 +14,7 @@ str(read3) ; class(read3)
 head(read3)
 #difference is use of specify delimeter(read.csv takes default as comma)
 #or location is different from Project Folders, or want to search for the file
-read4 = read.csv(file=file.choose())
+read4 = read.csv(file=file.choose()) #to read a csv that is in some other location
 str(read4)
 head(read4)
 
@@ -32,15 +32,19 @@ read_txt = read.table("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/
 head(read_txt)
 
 #Google Sheets-----
+install.packages("gsheet")
 library(gsheet)
 url_gsheet = "https://docs.google.com/spreadsheets/d/1QogGSuEab5SZyZIw1Q8h-0yrBNs1Z_eEBJG7oRESW5k/edit#gid=107865534"
-df_gsheet = as.data.frame(gsheet2tbl(url_gsheet))
+df_gsheet = as.data.frame(gsheet2tbl(url_gsheet)) #convert gsheet to table
 head(df_gsheet)
 
 #Excel----
 #Create a excel file with data in 2 sheets
 # first row contains variable names
+install.packages("xlsx")
 library(xlsx)
+Sys.setenv(JAVA_HOME=)
+library(rJava)
 df_excel1 = read.xlsx( "./data/myexcel.xlsx", 1)
 df_excel1
 # read in the worksheet named mysheet
